@@ -31,11 +31,37 @@
         <main>
             <form class="create-form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <p2 class="first-stap-title">Введите информацию о себе</p2>
+                <div class="first-stap-form">
+                    <div class="form-field">
+                        <label for="{{ form.name.id_for_label }}">Имя:</label>
+                        {{ form.name }}
+                    </div>
+    
+                    <div class="form-field">
+                        <label for="{{ form.job.id_for_label }}">Должность:</label>
+                        {{ form.job }}
+                    </div>
+    
+                    <div class="form-field">
+                        <label for="{{ form.salary.id_for_label }}">Желаемая зар.плата:</label>
+                        {{ form.salary }}
+                    </div>
+    
+                    <div class="form-field photo">
+                        <label for="{{ form.photo.id_for_label }}">Ваще фото:</label>
+                        {{ form.photo }}
+                    </div>
+    
+                    <div class="form-field disk">
+                        <label for="{{ form.description.id_for_label }}">Немного опишите себя</label>
+                        {{ form.description }}
+                    </div>
+                </div>
 
                 <h3>Опыт работы</h3>
 
-                <div id="empty-experience-form" >
+                <div id="empty-experience-form">
                     <div id="experience-formset">
                         {{ experience_formset.management_form }}
                         {% for form in experience_formset %}
@@ -50,7 +76,7 @@
 
 
                 <h3>Навыки</h3>
-                <div id="empty-skill-form" >
+                <div id="empty-skill-form">
                     <div id="skill-formset">
                         {{ skill_formset.management_form }}
                         {% for form in skill_formset %}
@@ -66,7 +92,7 @@
 
 
                 <h3>Проекты</h3>
-                <div id="empty-case-form" >
+                <div id="empty-case-form">
                     <div id="case-formset">
                         {{ case_formset.management_form }}
                         {% for form in case_formset %}

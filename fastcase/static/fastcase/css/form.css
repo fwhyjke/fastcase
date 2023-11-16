@@ -1,3 +1,86 @@
+@font-face {
+  font-family: Inter-Regular;
+  src: url('fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Bold;
+  src: url('fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Light;
+  src: url('fonts/Inter-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .create-form {
-    background-color: white;
+    color: wheat;
+}
+
+.first-stap-form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.01rem solid white;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.form-field {
+  margin-bottom: 1.6rem;
+  /* Стили для каждого поля формы */
+}
+
+.form-field label {
+  text-align: center;
+  font-family: Inter-Regular;
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  /* Стили для названия полей */
+}
+
+.form-field input {
+  width: 22rem;
+  height: 3rem;
+  font-family: Inter-Light;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.6rem;
+  border: 0;
+  border-radius: 16px;
+  /* Стили для названия полей */
+}
+
+.disk textarea {
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  width: 25em;
+  height: 8rem;
+  resize: none;
+  font-family: Inter-Light;
+  border-radius: 8px;
+}
+
+.photo input {
+  display: inline;
+  height: auto;
+  /* Общий стиль для поля ввода */
+  font-size: 12px;
+  border-radius: 4px;
+  color: #555;
+  box-shadow: none;
+}
+
+.first-stap-title {
+  display: block;
+  font-family: Inter-Bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
