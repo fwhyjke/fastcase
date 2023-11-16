@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'fastcase/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fastcase/css/welcome.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <ul class="header-list">
+                <li>
+                    <a class="header-list__name">fastcase</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">о нас</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">контакты</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="/create-page">создать страницу</a>
+                </li>
+            </ul>
+        </header>
+        <main>
+            <section class="promo">
+                <h1 class="main-title">FASTCASE</h1>
+                <p class="promo-text">Создай свое резюме в форме
+                    сайта за считанные минуты</p>
+                <a class="go-btn" href="">ПОПРОБОВАТЬ</a>
+            </section>
+            <section class="reg">
+                <h2 class="reg__how-to">Как начать:</h2>
+                <p class="reg__text">1. Зарегистрируйтесь</p>
+                <p class="reg__text">2. Введите данные о себе
+                    в разделе создания сайта</p>
+                <p class="reg__text">3. Получите ссылку на
+                    свой сайт</p>
+            </section>
+        </main>
+        <footer id="foot">
+                <p class="footer__mail">timofeevila423@gmail.com</p>
+                <a class="footer__link" href="https://t.me/fwhyjke">fwhyjke</a>
+                <p class="footer__elem" href="#">created by Ilya T.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

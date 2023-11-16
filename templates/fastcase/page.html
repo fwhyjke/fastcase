@@ -23,7 +23,7 @@
                     <a class="header-list__element" href="#">контакты</a>
                 </li>
                 <li>
-                    <a class="header-list__element" href="#">создать страницу</a>
+                    <a class="header-list__element" href="/create-page">создать страницу</a>
                 </li>
             </ul>
         </header>
@@ -31,7 +31,7 @@
             <div>
                 <section class="main">
                     <h1 id="name" class="main__name">Иван Иванов</h1>
-                    <h2 class="main__prof">Программист</h2>
+                    <h2 id="job" class="main__prof">Программист</h2>
                     <p id="salary" class="main__salary">Желаяемая зарплата: 1000000р</p>
                     <img id="photo" class="main_photo" src="{% static 'fastcase/images/photo.jpg' %}" alt="">
                 </section>
@@ -87,7 +87,31 @@
             </div>
         </main>
     </div>
-    <script src="{% static 'fastcase/js/script.js' %}"></script>
+    <script>
+        // Создаем новый XMLHttpRequest объект
+var xhr = new XMLHttpRequest();
+var pageId = '{{ page_id }}';
+// Указываем метод запроса и URL
+xhr.open('GET', 'http://127.0.0.1:8000/api/get_page_info/?id=' + pageId, true);
+// Отправляем запрос
+xhr.send();
+// Отслеживаем изменение состояния запроса
+xhr.onreadystatechange = function() {
+  // Проверяем, что запрос успешно завершен и статус ответа 200 (OK)
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    // Парсим JSON ответ
+    var data = JSON.parse(xhr.responseText);
+
+    // Находим элементы HTML-разметки, куда нужно вставить данные, и обновляем их значения
+//    document.getElementById('user').innerHTML = data.user;
+    document.getElementById('name').innerHTML = data.name;
+    document.getElementById('job').innerHTML = data.job;
+    document.getElementById('salary').innerHTML = data.salary;
+    document.getElementById('photo').src = data.photo;
+    document.getElementById('description').innerHTML = data.description;
+  }
+};
+    </script>
 </body>
 
 </html>

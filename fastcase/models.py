@@ -7,6 +7,7 @@ from users.models import User
 class Info(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     name = models.CharField(max_length=50)
+    job = models.CharField(max_length=50)
     salary = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='images/users_photo', blank=True)
     description = models.TextField()

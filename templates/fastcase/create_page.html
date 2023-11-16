@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'fastcase/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fastcase/css/form.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <ul class="header-list">
+                <li>
+                    <a class="header-list__name">fastcase</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">о нас</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">контакты</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">создать страницу</a>
+                </li>
+            </ul>
+        </header>
+        <main>
+            <form class="create-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <h3>Опыт работы</h3>
+
+                <div id="empty-experience-form" >
+                    <div id="experience-formset">
+                        {{ experience_formset.management_form }}
+                        {% for form in experience_formset %}
+                        <div class="form-block">
+                            {{ form.as_table }}
+                            <button class="remove-form" type="button">Удалить</button>
+                        </div>
+                        {% endfor %}
+                        <button id="add-experience-form" class="add-form" type="button">Добавить навык</button>
+                    </div>
+                </div>
+
+
+                <h3>Навыки</h3>
+                <div id="empty-skill-form" >
+                    <div id="skill-formset">
+                        {{ skill_formset.management_form }}
+                        {% for form in skill_formset %}
+                        <div class="form-block">
+                            {{ form.as_table }}
+                            <button class="remove-form" type="button">Удалить</button>
+                        </div>
+                        {% endfor %}
+                        <button id="add-skill-form" class="add-form" type="button">Добавить опыт</button>
+                    </div>
+                </div>
+
+
+
+                <h3>Проекты</h3>
+                <div id="empty-case-form" >
+                    <div id="case-formset">
+                        {{ case_formset.management_form }}
+                        {% for form in case_formset %}
+                        <div class="form-block">
+                            {{ form.as_table }}
+                            <button class="remove-form" type="button">Удалить</button>
+                        </div>
+                        {% endfor %}
+                        <button id="add-case-form" class="add-form" type="button">Добавить кейс</button>
+                    </div>
+                </div>
+
+
+
+                <input type="submit" value="Сохранить">
+            </form>
+        </main>
+    </div>
+    <script src="{% static 'fastcase/js/forms.js' %}"></script>
+</body>
+
+</html>

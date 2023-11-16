@@ -5,6 +5,7 @@ from rest_framework.serializers import Serializer
 class PageInfoSerializer(Serializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)
     name = serializers.CharField(max_length=50)
+    job = serializers.CharField(max_length=50)
     salary = serializers.CharField(max_length=20)
     photo = serializers.ImageField()
     description = serializers.CharField()
