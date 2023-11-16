@@ -128,7 +128,7 @@ footer {
     font-size: 1.6rem;
 }
 
-main {
+.main-wrap {
     margin-top: 8rem;
     display: flex;
     justify-content: space-between;

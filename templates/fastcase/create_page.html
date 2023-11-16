@@ -29,85 +29,121 @@
             </ul>
         </header>
         <main>
+            <div class="title-h1">
+                <h1>ЗАПОЛНИ ФОРМУ, И ТВОЙ САЙТ-РЕЗЮМЕ БУДЕТ ГОТОВ</h1>
+            </div>
+
             <form class="create-form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <p2 class="first-stap-title">Введите информацию о себе</p2>
-                <div class="first-stap-form">
-                    <div class="form-field">
-                        <label for="{{ form.name.id_for_label }}">Имя:</label>
-                        {{ form.name }}
-                    </div>
-    
-                    <div class="form-field">
-                        <label for="{{ form.job.id_for_label }}">Должность:</label>
-                        {{ form.job }}
-                    </div>
-    
-                    <div class="form-field">
-                        <label for="{{ form.salary.id_for_label }}">Желаемая зар.плата:</label>
-                        {{ form.salary }}
-                    </div>
-    
-                    <div class="form-field photo">
-                        <label for="{{ form.photo.id_for_label }}">Ваще фото:</label>
-                        {{ form.photo }}
-                    </div>
-    
-                    <div class="form-field disk">
-                        <label for="{{ form.description.id_for_label }}">Немного опишите себя</label>
-                        {{ form.description }}
-                    </div>
-                </div>
-
-                <h3>Опыт работы</h3>
-
-                <div id="empty-experience-form">
-                    <div id="experience-formset">
-                        {{ experience_formset.management_form }}
-                        {% for form in experience_formset %}
-                        <div class="form-block">
-                            {{ form.as_table }}
-                            <button class="remove-form" type="button">Удалить</button>
+                <div class="form-wrapper">
+                    <div class="wrapper-1">
+                        <h2 class="first-stap-title">Введите информацию о себе</h2>
+                        <div class="first-stap-form">
+                            <div class="form-field">
+                                <label for="{{ form.name.id_for_label }}">Имя:</label>
+                                {{ form.name }}
+                            </div>
+        
+                            <div class="form-field">
+                                <label for="{{ form.job.id_for_label }}">Должность:</label>
+                                {{ form.job }}
+                            </div>
+        
+                            <div class="form-field">
+                                <label for="{{ form.salary.id_for_label }}">Желаемая зар.плата:</label>
+                                {{ form.salary }}
+                            </div>
+        
+                            <div class="form-field photo">
+                                <label for="{{ form.photo.id_for_label }}">Ваще фото:</label>
+                                {{ form.photo }}
+                            </div>
+        
+                            <div class="form-field disk">
+                                <label for="{{ form.description.id_for_label }}">Немного опишите себя</label>
+                                {{ form.description }}
+                            </div>
                         </div>
-                        {% endfor %}
-                        <button id="add-experience-form" class="add-form" type="button">Добавить навык</button>
-                    </div>
-                </div>
-
-
-                <h3>Навыки</h3>
-                <div id="empty-skill-form">
-                    <div id="skill-formset">
-                        {{ skill_formset.management_form }}
-                        {% for form in skill_formset %}
-                        <div class="form-block">
-                            {{ form.as_table }}
-                            <button class="remove-form" type="button">Удалить</button>
+        
+        
+                        <h3 class="second-stap-title">Укажите свои навыки</h3>
+                        <div id="empty-skill-form">
+                            <div id="skill-formset">
+                                {{ skill_formset.management_form }}
+                                {% for form in skill_formset %}
+                                <div class="form-block">
+                                    <div class="second-stap-form">
+                                        <div class="form-field">
+                                            <label for="{{ form.name.id_for_label }}">Навык</label>
+                                            {{ form.skill }}
+                                        </div>
+                                        <button class="remove-form" type="button">удалить</button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
                         </div>
-                        {% endfor %}
                         <button id="add-skill-form" class="add-form" type="button">Добавить опыт</button>
+                        <input class="finish-form glow-on-hover" type="submit" value="СОЗДАТЬ САЙТ">
                     </div>
-                </div>
-
-
-
-                <h3>Проекты</h3>
-                <div id="empty-case-form">
-                    <div id="case-formset">
-                        {{ case_formset.management_form }}
-                        {% for form in case_formset %}
-                        <div class="form-block">
-                            {{ form.as_table }}
-                            <button class="remove-form" type="button">Удалить</button>
+                    
+                    <div class="wrapper-1">
+                        <h3 class="second-stap-title">Введите ваш опыт работы</h3>
+                        <div id="empty-experience-form">
+                            <div id="experience-formset">
+                                {{ experience_formset.management_form }}
+                                {% for form in experience_formset %}
+                                <div class="form-block">
+                                    <div class="second-stap-form">
+                                        <div class="form-field">
+                                            <label for="{{ form.name.id_for_label }}">Место работы:</label>
+                                            {{ form.title }}
+                                        </div>
+                                        <div class="form-field disk">
+                                            <label for="{{ form.name.id_for_label }}">Ваш опыт на этой работе:</label>
+                                            {{ form.description }}
+                                        </div>
+                                        <button class="remove-form" type="button">удалить</button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
                         </div>
-                        {% endfor %}
-                        <button id="add-case-form" class="add-form" type="button">Добавить кейс</button>
+                        <button id="add-experience-form" class="add-form" type="button">Добавить место работы</button>
+        
+        
+                        <h3 class="second-stap-title">Расскажите про свои</h3>
+                        <div id="empty-case-form">
+                            <div id="case-formset">
+                                {{ case_formset.management_form }}
+                                {% for form in case_formset %}
+                                <div class="form-block">
+                                    <div class="second-stap-form">
+                                        <div class="form-field">
+                                            <label for="{{ form.name.id_for_label }}">Название</label>
+                                            {{ form.title }}
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="{{ form.name.id_for_label }}">Описание</label>
+                                            {{ form.description }}
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="{{ form.name.id_for_label }}">Ссылка</label>
+                                            {{ form.link }}
+                                        </div>
+                                        <button class="remove-form" type="button">удалить</button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>    
+                        <button id="add-case-form" class="add-form" type="button">Добавить проект</button>
                     </div>
                 </div>
 
-
-
-                <input type="submit" value="Сохранить">
             </form>
         </main>
     </div>
