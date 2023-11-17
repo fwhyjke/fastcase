@@ -18,13 +18,13 @@
                     <a class="header-list__name" href="/">fastcase</a>
                 </li>
                 <li>
-                    <a class="header-list__element" href="#">о нас</a>
-                </li>
-                <li>
                     <button class="header-list__element-btn" id="contact-btn">контакты</и>
                 </li>
                 <li>
                     <a class="header-list__element" href="/create-page">создать страницу</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="#">войти</a>
                 </li>
             </ul>
         </header>
@@ -45,24 +45,29 @@
             </section>
         </main>
         <footer id="foot">
-                <p class="footer__mail">timofeevila423@gmail.com</p>
-                <a class="footer__link" href="https://t.me/fwhyjke">fwhyjke</a>
-                <p class="footer__elem" href="#">created by Ilya T.</p>
+            <p class="footer__mail">timofeevila423@gmail.com</p>
+            <a class="footer__link" href="https://t.me/fwhyjke">fwhyjke</a>
+            <p class="footer__elem" href="#">created by Ilya T.</p>
         </footer>
     </div>
     <script>
-        document.getElementById('contact-btn').addEventListener('click', function() {
-          var element = document.getElementById('foot');
-      
-          // Добавляем класс, чтобы применить стиль подсветки
-          element.classList.add('highlighted');
-      
-          // Через секунду убираем класс, чтобы подсветка исчезла
-          setTimeout(function() {
-            element.classList.remove('highlighted');
-          }, 1000);
+        document.addEventListener('DOMContentLoaded', function () {
+            var element = document.getElementById('foot');
+            element.classList.add('highlighted');
+            setTimeout(function () {
+                element.classList.remove('highlighted');
+            }, 800);
+            
         });
-      </script>
+
+        document.getElementById('contact-btn').addEventListener('click', function () {
+            var element = document.getElementById('foot');
+            element.classList.add('highlighted');
+            setTimeout(function () {
+                element.classList.remove('highlighted');
+            }, 1000);
+        });
+    </script>
 </body>
 
 </html>
