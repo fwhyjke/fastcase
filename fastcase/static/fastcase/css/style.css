@@ -54,7 +54,7 @@ footer {
 }
 
 .footer__mail {
-    width: calc(110rem / 3);
+    width: 30rem;
     display: inline-block;
     margin: 0;
     padding: 1.6rem 0;
@@ -67,7 +67,7 @@ footer {
 
 
 .footer__elem {
-    width: calc(110rem / 3);
+    width: 30rem;
     display: inline-block;
     margin: 0;
     padding: 1.6rem 0;
@@ -79,8 +79,7 @@ footer {
 }
 
 .footer__link {
-    padding-right: 1rem !important;
-    width: calc(110rem / 3);
+    width: 23rem;
     display: inline-block;
     padding: 1.6rem 0;
     color: rgba(255, 255, 255, 0.60);
@@ -116,6 +115,16 @@ footer {
     font-family: Inter-Regular;
     font-size: 1.6rem;
     text-decoration: none;
+}
+
+.header-list__element-btn {
+    border: none;
+    padding: 1.6rem;
+    font-family: Inter-Regular;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.60);
+    background: #595959;
+    cursor: pointer;
 }
 
 .header-list__name {
@@ -352,3 +361,17 @@ footer {
     flex-direction: column;
     align-items: center;
 }
+
+.header-list__element:focus #foot {
+    transform: scale(1.1); /* Увеличить размер */
+    background-color: #ffd700; /* Добавьте цвет подсветки по вашему выбору */
+    transition: transform 0.2s, background-color 0.2s; /* Добавить плавный эффект перехода */
+}
+
+#foot {
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  #foot.highlighted {
+    box-shadow: 0 0 10px 1px white;
+  }

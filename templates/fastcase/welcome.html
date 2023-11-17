@@ -21,7 +21,7 @@
                     <a class="header-list__element" href="#">о нас</a>
                 </li>
                 <li>
-                    <a class="header-list__element" href="#">контакты</a>
+                    <button class="header-list__element-btn" id="contact-btn">контакты</и>
                 </li>
                 <li>
                     <a class="header-list__element" href="/create-page">создать страницу</a>
@@ -50,6 +50,19 @@
                 <p class="footer__elem" href="#">created by Ilya T.</p>
         </footer>
     </div>
+    <script>
+        document.getElementById('contact-btn').addEventListener('click', function() {
+          var element = document.getElementById('foot');
+      
+          // Добавляем класс, чтобы применить стиль подсветки
+          element.classList.add('highlighted');
+      
+          // Через секунду убираем класс, чтобы подсветка исчезла
+          setTimeout(function() {
+            element.classList.remove('highlighted');
+          }, 1000);
+        });
+      </script>
 </body>
 
 </html>
