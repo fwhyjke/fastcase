@@ -1,35 +1,93 @@
-function addForm(formsetPrefix) {
-    const formset = document.getElementById(formsetPrefix + "-formset");
-    const formTemplate = document.getElementById(formsetPrefix + "-form-block");
-    const newForm = formTemplate.cloneNode(true);
-    newForm.style.display = "block";
-    formset.appendChild(newForm);
-  }
 
-    // Функция для удаления блока формы
-    function removeForm(event) {
-        const formBlock = event.target.closest(".form-block");
-        formBlock.remove();
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    var addButton = document.getElementById("add-skill-form");
+    var formContainer = document.getElementById("skill-formset");
 
-    // Обработчик клика на кнопку "Добавить навык"
-    document.getElementById("add-skill-form").addEventListener("click", () => {
-        addForm("skill");
-    });
+    addButton.addEventListener("click", function () {
+        // Находим первый блок формы со стилем "none"
+        var hiddenForm = Array.from(formContainer.querySelectorAll(".form-block")).find(function (form) {
+            return form.style.display === "none";
+        });
 
-    // Обработчик клика на кнопку "Добавить проект"
-    document.getElementById("add-case-form").addEventListener("click", () => {
-        addForm("case");
-    });
-
-    // Обработчик клика на кнопку "Добавить опыт работы"
-    document.getElementById("add-experience-form").addEventListener("click", () => {
-        addForm("experience");
-    });
-
-    // Обработчик клика на кнопку "Удалить"
-    document.addEventListener("click", (event) => {
-        if (event.target.classList.contains("remove-form")) {
-            removeForm(event);
+        // Если есть блок со стилем "none", то изменяем его стиль на "block"
+        if (hiddenForm) {
+            hiddenForm.style.display = "block";
         }
     });
+
+    // Добавляем обработчик события для кнопки "удалить"
+    formContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("remove-form")) {
+            // Находим родительский блок формы
+            var formBlock = event.target.closest(".form-block");
+
+            // Если нашли, изменяем стиль на "none"
+            if (formBlock) {
+                formBlock.style.display = "none";
+            }
+        }
+    });
+});
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var addButton = document.getElementById("add-experience-form");
+        var formContainer = document.getElementById("experience-formset");
+
+        addButton.addEventListener("click", function () {
+            // Находим первый блок формы со стилем "none"
+            var hiddenForm = Array.from(formContainer.querySelectorAll(".form-block")).find(function (form) {
+                return form.style.display === "none";
+            });
+
+            // Если есть блок со стилем "none", то изменяем его стиль на "block"
+            if (hiddenForm) {
+                hiddenForm.style.display = "block";
+            }
+        });
+
+            // Добавляем обработчик события для кнопки "удалить"
+    formContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("remove-form")) {
+            // Находим родительский блок формы
+            var formBlock = event.target.closest(".form-block");
+
+            // Если нашли, изменяем стиль на "none"
+            if (formBlock) {
+                formBlock.style.display = "none";
+            }
+        }
+    });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var addButton = document.getElementById("add-case-form");
+        var formContainer = document.getElementById("case-formset");
+
+        addButton.addEventListener("click", function () {
+            // Находим первый блок формы со стилем "none"
+            var hiddenForm = Array.from(formContainer.querySelectorAll(".form-block")).find(function (form) {
+                return form.style.display === "none";
+            });
+
+            // Если есть блок со стилем "none", то изменяем его стиль на "block"
+            if (hiddenForm) {
+                hiddenForm.style.display = "block";
+            }
+        });
+
+            // Добавляем обработчик события для кнопки "удалить"
+    formContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("remove-form")) {
+            // Находим родительский блок формы
+            var formBlock = event.target.closest(".form-block");
+
+            // Если нашли, изменяем стиль на "none"
+            if (formBlock) {
+                formBlock.style.display = "none";
+            }
+        }
+    });
+    });
+

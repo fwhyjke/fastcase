@@ -31,6 +31,6 @@ class CaseForm(forms.ModelForm):
         fields = ['title', 'description', 'link']
 
 
-ExperienceFormSet = inlineformset_factory(Info, Experience, form=ExperienceForm, extra=1)
-SkillFormSet = inlineformset_factory(Info, Skill, form=SkillForm, extra=1)
-CaseFormSet = inlineformset_factory(Info, Case, form=CaseForm, extra=1)
+ExperienceFormSet = inlineformset_factory(Info, Experience, form=ExperienceForm, extra=20)
+SkillFormSet = inlineformset_factory(Info, Skill, form=SkillForm, extra=20)
+CaseFormSet = inlineformset_factory(Info, Case, form=CaseForm, extra=20)
