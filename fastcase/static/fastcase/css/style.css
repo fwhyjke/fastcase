@@ -264,7 +264,7 @@ footer {
     margin-bottom: 1.6rem;
 }
 
-.exp>.job>h3 {
+.exp__job_h3 {
     margin: 0;
     color: #FFF;
     font-family: Inter-Light;
@@ -272,7 +272,7 @@ footer {
     opacity: 95%;
 }
 
-.exp>.job>p {
+.exp__job_p {
     margin: 0;
     color: #FFF;
     font-family: Inter-Light;
