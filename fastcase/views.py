@@ -68,4 +68,3 @@ class CreatePageView(LoginRequiredMixin, FormView):
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form))
-#         sgfdgfdhng

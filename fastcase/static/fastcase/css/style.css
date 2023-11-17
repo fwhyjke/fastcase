@@ -199,7 +199,7 @@ footer {
 
 .about>h2 {
     margin: 0;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.2rem;
     color: #FFF;
     font-family: Inter-Bold;
     font-size: 3.2rem;
@@ -230,10 +230,22 @@ footer {
     padding-inline-start: 0;
 }
 
+.cases_list {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+.exp_list {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
 .about__skils>li>p {
     opacity: 50%;
     margin: 0;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
     color: #FFF;
     font-family: Inter-Regular;
     font-size: 1.6rem;
@@ -264,16 +276,18 @@ footer {
     margin-bottom: 1.6rem;
 }
 
-.exp>.job>h3 {
+.job__title {
     margin: 0;
+    margin-bottom: 0.4rem;
     color: #FFF;
     font-family: Inter-Light;
     font-size: 2rem;
     opacity: 95%;
 }
 
-.exp>.job>p {
+.job__description {
     margin: 0;
+    margin-bottom: 1.2rem;
     color: #FFF;
     font-family: Inter-Light;
     font-size: 1.6rem;
@@ -314,22 +328,23 @@ footer {
     width: 34rem;
     color: #FFF;
     font-family: Inter-Regular;
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    opacity: 50%;
+    opacity: 80%;
 }
 
 .case__link {
     width: 34rem;
     color: #FFF;
     font-family: Inter-Light;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    opacity: 50%;
 }
 
 .second {

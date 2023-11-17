@@ -1,62 +1,53 @@
 var pageId = document.getElementById('my-element').dataset.pageId;
 
-// Функция для создания AJAX запроса
-function makeAjaxRequest(url, method, callback) {
+document.addEventListener("DOMContentLoaded", function () {
+  // Замените "ваш_эндпоинт" на реальный URL вашего API
+  var apiUrl = 'http://127.0.0.1:8000/api/get_page_info/?id=' + pageId;
+
   var xhr = new XMLHttpRequest();
-  xhr.open(method, url, true);
+  xhr.open("GET", apiUrl, true);
   xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
+      if (xhr.readyState === 4 && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-          callback(data);
+
+          // Здесь вы можете заполнить данные в соответствующие элементы вашего HTML
+
+          // Заполнение основной информации
+          document.getElementById("name").textContent = data.name || "не указано";
+          document.getElementById("job").textContent = data.job || "не указано";
+          document.getElementById("salary").textContent = data.salary || "не указано";
+          document.getElementById("photo").src = data.photo || "{% static 'fastcase/images/photo.jpg' %}";
+          document.getElementById("description").textContent = data.description || "Не указано";
+
+          // Заполнение опыта работы
+          var expList = document.querySelector(".exp_list");
+          expList.innerHTML = "";
+          data.experience.forEach(function (experience) {
+              var jobItem = document.createElement("li");
+              jobItem.innerHTML = "<div class='job'><h3 class='job__title'>" + (experience.title || "не указано") + "</h3><p class='job__description'>" + (experience.description || "не указано") + "</p></div>";
+              expList.appendChild(jobItem);
+          });
+
+          // Заполнение профессиональных навыков
+          var skillsList = document.querySelector(".about__skils");
+          skillsList.innerHTML = "";
+          data.skill.forEach(function (skill) {
+              var skillItem = document.createElement("li");
+              skillItem.innerHTML = "<p>" + skill + "</p>";
+              skillsList.appendChild(skillItem);
+          });
+
+          // Заполнение кейсов
+          var casesList = document.querySelector(".cases_list");
+          casesList.innerHTML = "";
+          data.case.forEach(function (caseItem) {
+              var caseElement = document.createElement("li");
+              caseElement.innerHTML = "<section class='case'><h1 class='case__name'>" + (caseItem.title || "не указано") + "</h1><h2 class='case__desc'>" + (caseItem.description || "не указано") + "</h2><a class='case__link' href='" + (caseItem.link || "не указано") + "'>" + (caseItem.link || "не указано") + "</a></section>";
+              casesList.appendChild(caseElement);
+          });
+      } else if (xhr.readyState === 4) {
+          console.log("Error fetching data. Status: " + xhr.status);
       }
   };
   xhr.send();
-}
-
-// Используем функцию для загрузки данных с API
-makeAjaxRequest('http://127.0.0.1:8000/api/get_page_info/?id=' + pageId, 'GET', function (data) {
-  // Здесь можно использовать полученные данные для заполнения HTML
-
-  // Пример: Заполняем основную информацию
-  document.getElementById('name').innerText = data.name || 'не указано';
-  document.getElementById('job').innerText = data.job || 'не указано';
-  document.getElementById('salary').innerText = data.salary || 'не указано';
-  document.getElementById('photo').src = data.photo || '{% static "fastcase/images/photo.jpg" %}';
-
-  // Пример: Заполняем опыт работы
-  const expSection = document.querySelector('.exp .job');
-  expSection.innerHTML = ''; // Очищаем секцию перед заполнением
-
-  data.experience.forEach(exp => {
-      const jobElement = document.createElement('div');
-      jobElement.innerHTML = `<h3 class="exp__job_h3">${exp.title || 'не указано'}</h3><p class="exp__job_p">${exp.description || 'не указано'}</p>`;
-      expSection.appendChild(jobElement);
-  });
-
-  // Пример: Заполняем обо мне
-  document.getElementById('description').innerText = data.description || 'не указано';
-
-  // Пример: Заполняем профессиональные навыки
-  const skillsList = document.querySelector('.about__skils');
-  skillsList.innerHTML = ''; // Очищаем список перед заполнением
-
-  data.skill.forEach(skill => {
-      const skillElement = document.createElement('li');
-      skillElement.innerHTML = `<p>${skill || 'не указано'}</p>`;
-      skillsList.appendChild(skillElement);
-  });
-
-  // Пример: Заполняем кейсы
-  const casesSection = document.querySelector('.case');
-  casesSection.innerHTML = ''; // Очищаем секцию перед заполнением
-
-  data.case.forEach(caseItem => {
-      const caseElement = document.createElement('section');
-      caseElement.innerHTML = `
-          <h1 class="case__name">${caseItem.title || 'не указано'}</h1>
-          <h2 class="case__desc">${caseItem.description || 'не указано'}</h2>
-          <a class="case__link" href="${caseItem.link || 'не указано'}">${caseItem.link || 'не указано'}</a>
-      `;
-      casesSection.appendChild(caseElement);
-  });
 });
