@@ -1,12 +1,10 @@
-    // Функция для добавления нового блока формы
 function addForm(formsetPrefix) {
     const formset = document.getElementById(formsetPrefix + "-formset");
-    const formCount = formset.getElementsByTagName("form").length;
-    const newForm = document.createElement("div");
-    newForm.classList.add("form-block");
-    newForm.innerHTML = document.getElementById("empty-" + formsetPrefix + "-form").innerHTML.replace(/__prefix__/g, formCount);
+    const formTemplate = document.getElementById(formsetPrefix + "-form-block");
+    const newForm = formTemplate.cloneNode(true);
+    newForm.style.display = "block";
     formset.appendChild(newForm);
-}
+  }
 
     // Функция для удаления блока формы
     function removeForm(event) {
@@ -35,4 +33,3 @@ function addForm(formsetPrefix) {
             removeForm(event);
         }
     });
-

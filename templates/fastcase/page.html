@@ -14,7 +14,7 @@
         <header>
             <ul class="header-list">
                 <li>
-                    <a class="header-list__name">fastcase</a>
+                    <a class="header-list__name" href="/">fastcase</a>
                 </li>
                 <li>
                     <a class="header-list__element" href="#">о нас</a>
@@ -30,88 +30,41 @@
         <main class="main-wrap">
             <div>
                 <section class="main">
-                    <h1 id="name" class="main__name">Иван Иванов</h1>
-                    <h2 id="job" class="main__prof">Программист</h2>
-                    <p id="salary" class="main__salary">Желаяемая зарплата: 1000000р</p>
+                    <h1 id="name" class="main__name">не указано</h1>
+                    <h2 id="job" class="main__prof">не указано</h2>
+                    <p id="salary" class="main__salary">не указано</p>
                     <img id="photo" class="main_photo" src="{% static 'fastcase/images/photo.jpg' %}" alt="">
                 </section>
                 <section class="exp">
                     <h2>Опыт работы</h2>
                     <div class="job">
-                        <h3>Google</h3>
-                        <p>Работал, работал и работал. Делал всякие штуки. Тут что то надо написать.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Facebook</h3>
-                        <p>Работал, работал и работал. Делал всякие штуки. Тут что то надо написать.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Apple</h3>
-                        <p>Работал, работал и работал. Делал всякие штуки. Тут что то надо написать.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Netflix</h3>
-                        <p>Работал, работал и работал. Делал всякие штуки. Тут что то надо написать.</p>
+                        <h3>не указано</h3>
+                        <p>не указано</p>
                     </div>
                 </section>
             </div>
             <div class="second">
                 <section class="about">
                     <h2>Обо мне</h2>
-                    <p id="description" class="about__desc">Таким образом начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям. Задача организации, в особенности же постоянный количественный
-                        рост и сфера нашей активности способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям. Задача организации, в особенности же начало повседневной работы по формированию позиции играет важную
-                        роль в формировании модели развития. Разнообразный и богатый опыт консультация с широким активом играет важную роль в формировании соответствующий условий активизации.</p>
+                    <p id="description" class="about__desc">Не указано</p>
                     <h3>Профессиональные навыки:</h3>
                     <ul class="about__skils">
                         <li>
-                            <p>Хороший</p>
-                        </li>
-                        <li>
-                            <p>Плохой</p>
-                        </li>
-                        <li>
-                            <p>Веселый</p>
-                        </li>
-                        <li>
-                            <p>Грустный</p>
+                            <p>Не указано</p>
                         </li>
                     </ul>
                 </section>
                 <h2 class="cases">Мои кейсы</h2>
                 <section class="case">
-                    <h1 class="case__name">youtube - крупнейший в мире видеохостинг</h1>
-                    <h2 class="case__desc">Таким образом начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям. Задача организации, в особенности же постоянный количественный
-                        рост и сфера нашей активности способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям.</h2>
-                    <a class="case__link" href="https://www.youtube.com/">youtube.com</a>
+                    <h1 class="case__name">не указано</h1>
+                    <h2 class="case__desc">не указано</h2>
+                    <a class="case__link" href="не указано">не указано</a>
                 </section>
             </div>
         </main>
     </div>
-    <script>
-        // Создаем новый XMLHttpRequest объект
-var xhr = new XMLHttpRequest();
-var pageId = '{{ page_id }}';
-// Указываем метод запроса и URL
-xhr.open('GET', 'http://127.0.0.1:8000/api/get_page_info/?id=' + pageId, true);
-// Отправляем запрос
-xhr.send();
-// Отслеживаем изменение состояния запроса
-xhr.onreadystatechange = function() {
-  // Проверяем, что запрос успешно завершен и статус ответа 200 (OK)
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    // Парсим JSON ответ
-    var data = JSON.parse(xhr.responseText);
-
-    // Находим элементы HTML-разметки, куда нужно вставить данные, и обновляем их значения
-//    document.getElementById('user').innerHTML = data.user;
-    document.getElementById('name').innerHTML = data.name;
-    document.getElementById('job').innerHTML = data.job;
-    document.getElementById('salary').innerHTML = data.salary;
-    document.getElementById('photo').src = data.photo;
-    document.getElementById('description').innerHTML = data.description;
-  }
-};
-    </script>
+    <div id="my-element" data-page-id="{{ page_id }}"></div>
+    <script src="{% static 'fastcase/js/script.js' %}"></script>
 </body>
 
 </html>

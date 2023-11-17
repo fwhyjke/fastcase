@@ -15,7 +15,7 @@
         <header>
             <ul class="header-list">
                 <li>
-                    <a class="header-list__name">fastcase</a>
+                    <a class="header-list__name" href="/">fastcase</a>
                 </li>
                 <li>
                     <a class="header-list__element" href="#">о нас</a>
@@ -71,7 +71,7 @@
                             <div id="skill-formset">
                                 {{ skill_formset.management_form }}
                                 {% for form in skill_formset %}
-                                <div class="form-block">
+                                <div id="skill-form-block" class="form-block">
                                     <div class="second-stap-form">
                                         <div class="form-field">
                                             <label for="{{ form.name.id_for_label }}">Навык</label>
@@ -94,7 +94,7 @@
                             <div id="experience-formset">
                                 {{ experience_formset.management_form }}
                                 {% for form in experience_formset %}
-                                <div class="form-block">
+                                <div id="experience-form-block" class="form-block">
                                     <div class="second-stap-form">
                                         <div class="form-field">
                                             <label for="{{ form.name.id_for_label }}">Место работы:</label>
@@ -114,12 +114,12 @@
                         <button id="add-experience-form" class="add-form" type="button">Добавить место работы</button>
         
         
-                        <h3 class="second-stap-title">Расскажите про свои</h3>
+                        <h3 class="second-stap-title">Расскажите про свои проекты</h3>
                         <div id="empty-case-form">
                             <div id="case-formset">
                                 {{ case_formset.management_form }}
                                 {% for form in case_formset %}
-                                <div class="form-block">
+                                <div id="case-form-block" class="form-block">
                                     <div class="second-stap-form">
                                         <div class="form-field">
                                             <label for="{{ form.name.id_for_label }}">Название</label>
@@ -143,7 +143,6 @@
                         <button id="add-case-form" class="add-form" type="button">Добавить проект</button>
                     </div>
                 </div>
-
             </form>
         </main>
     </div>
