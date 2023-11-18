@@ -1,7 +1,8 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.forms import HiddenInput, inlineformset_factory
-
-from .models import *
+from fastcase.models import Info, Skill, Experience, Case
+from users.models import User
 
 
 class InfoForm(forms.ModelForm):
@@ -34,3 +35,14 @@ class CaseForm(forms.ModelForm):
 ExperienceFormSet = inlineformset_factory(Info, Experience, form=ExperienceForm, extra=20)
 SkillFormSet = inlineformset_factory(Info, Skill, form=SkillForm, extra=20)
 CaseFormSet = inlineformset_factory(Info, Case, form=CaseForm, extra=20)
+
+
+class RegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password1', 'password2']
+
+
+class LoginForm(AuthenticationForm):
+    class Meta:
+        fields = ['email', 'password']

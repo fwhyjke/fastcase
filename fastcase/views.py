@@ -1,10 +1,12 @@
+from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, FormView
-
+from users.models import User
 from fastcase.forms import *
 
 
@@ -26,6 +28,7 @@ class WelcomePageView(TemplateView):
 class CreatePageView(LoginRequiredMixin, FormView):
     template_name = 'fastcase/create_page.html'
     form_class = InfoForm
+    login_url = 'login'
 
     def get_success_url(self):
         return reverse_lazy('page') + f'?id={self.object}'
@@ -68,3 +71,26 @@ class CreatePageView(LoginRequiredMixin, FormView):
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form))
+
+
+class UserLoginView(LoginView):
+    template_name = 'fastcase/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('welcome')
+
+
+class LogoutUserView(LogoutView):
+    next_page = reverse_lazy('welcome')
+
+
+class RegistrationUserView(CreateView):
+    template_name = 'fastcase/registration.html'
+    model = User
+    form_class = RegistrationForm
+    success_url = reverse_lazy('welcome')
+
+    def form_valid(self, form):
+        user = form.save()
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        login(self.request, user)
+        return redirect('welcome')
