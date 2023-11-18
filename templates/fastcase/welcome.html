@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'fastcase/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'fastcase/css/welcome.css' %}">
+    <script src="https://kit.fontawesome.com/cfed9a189e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,7 +25,22 @@
                     <a class="header-list__element" href="/create-page">создать страницу</a>
                 </li>
                 <li>
+                    {% if user.is_authenticated %}
+                    <div class="user-container">
+                        <a class="header-list__element user-name" href="#"><i class="fa-solid fa-house house-icon"></i>
+                            {{ user.username }}</a>
+                        <ul class="user-list">
+                            <li>
+                                <a class="header-list__element" href="#">личный кабинет</a>
+                            </li>
+                            <li>
+                                <a class="header-list__element" href="#">выйти</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
                     <a class="header-list__element" href="#">войти</a>
+                    {% endif %}
                 </li>
             </ul>
         </header>
@@ -57,7 +73,7 @@
             setTimeout(function () {
                 element.classList.remove('highlighted');
             }, 800);
-            
+
         });
 
         document.getElementById('contact-btn').addEventListener('click', function () {

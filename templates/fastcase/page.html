@@ -17,13 +17,28 @@
                     <a class="header-list__name" href="/">fastcase</a>
                 </li>
                 <li>
-                    <a class="header-list__element" id="contactsLink" href="/">контакты</a>
+                    <button class="header-list__element-btn" id="contact-btn">контакты</и>
                 </li>
                 <li>
                     <a class="header-list__element" href="/create-page">создать страницу</a>
                 </li>
                 <li>
+                    {% if user.is_authenticated %}
+                    <div class="user-container">
+                        <a class="header-list__element user-name" href="#"><i class="fa-solid fa-house house-icon"></i>
+                            {{ user.username }}</a>
+                        <ul class="user-list">
+                            <li>
+                                <a class="header-list__element" href="#">личный кабинет</a>
+                            </li>
+                            <li>
+                                <a class="header-list__element" href="#">выйти</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
                     <a class="header-list__element" href="#">войти</a>
+                    {% endif %}
                 </li>
             </ul>
         </header>
