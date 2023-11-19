@@ -19,13 +19,14 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
 
-from fastcase_api.views import PageAPI
+from fastcase_api.views import PageAPI, VerifyEmailAPI
 from fastcase_core import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fastcase.urls')),
-    path('api/get_page_info/', PageAPI.as_view())
+    path('api/get_page_info/', PageAPI.as_view()),
+    path('verify-email/<str:token>', VerifyEmailAPI.as_view())
 ]
 
 if settings.DEBUG:

@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth import login
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
@@ -41,36 +43,40 @@ class CreatePageView(LoginRequiredMixin, FormView):
         return context
 
     def form_valid(self, form):
-        experience_formset = ExperienceFormSet(self.request.POST, prefix='experiences')
-        skill_formset = SkillFormSet(self.request.POST, prefix='skills')
-        case_formset = CaseFormSet(self.request.POST, prefix='cases')
+        if self.request.user.is_verify:
+            experience_formset = ExperienceFormSet(self.request.POST, prefix='experiences')
+            skill_formset = SkillFormSet(self.request.POST, prefix='skills')
+            case_formset = CaseFormSet(self.request.POST, prefix='cases')
 
-        form.instance.user = self.request.user
+            form.instance.user = self.request.user
 
-        if form.is_valid() and experience_formset.is_valid() and skill_formset.is_valid() and case_formset.is_valid():
-            info = form.save()
-            experiences = experience_formset.save(commit=False)
-            skills = skill_formset.save(commit=False)
-            print(skills)
-            cases = case_formset.save(commit=False)
+            if form.is_valid() and experience_formset.is_valid() and skill_formset.is_valid() and case_formset.is_valid():
+                info = form.save()
+                experiences = experience_formset.save(commit=False)
+                skills = skill_formset.save(commit=False)
+                print(skills)
+                cases = case_formset.save(commit=False)
 
-            for experience in experiences:
-                experience.page = info
-                experience.save()
+                for experience in experiences:
+                    experience.page = info
+                    experience.save()
 
-            for skill in skills:
-                skill.page = info
-                skill.save()
+                for skill in skills:
+                    skill.page = info
+                    skill.save()
 
-            for case in cases:
-                case.page = info
-                case.save()
+                for case in cases:
+                    case.page = info
+                    case.save()
 
-            self.object = info.pk
+                self.object = info.pk
 
-            return super().form_valid(form)
+                return super().form_valid(form)
+            else:
+                return self.render_to_response(self.get_context_data(form=form))
         else:
-            return self.render_to_response(self.get_context_data(form=form))
+            messages.error(self.request, "Вы должны пройти верификацию, чтобы заполнить эту форму.")
+            return redirect('профиль')  # замените 'your_redirect_url' на ваш путь редиректа
 
 
 class UserLoginView(LoginView):

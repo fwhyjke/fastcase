@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from users.models import User, VerifyEmailToken
 from fastcase.models import *
 from fastcase_api.serializers import PageInfoSerializer, ExperienceSerializer, SkillSerializer, CaseSerializer
 
@@ -33,3 +33,13 @@ class PageAPI(APIView):
         data['case'] = case
 
         return Response(data)
+
+
+class VerifyEmailAPI(APIView):
+    def get(self, request, **kwargs):
+        token = self.kwargs['token']
+        user = VerifyEmailToken.objects.get(token=token).user
+        user.is_verify = True
+        user.save()
+        return redirect('welcome')
+

@@ -42,6 +42,13 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ['email', 'username', 'password1', 'password2']
 
+    def save(self, commit=True):
+        data = self.cleaned_data
+        data['password'] = data.pop('password1')
+        del data['password2']
+        user = User.objects.create_user(**data)
+        return user
+
 
 class LoginForm(AuthenticationForm):
     class Meta:
