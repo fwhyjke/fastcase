@@ -75,14 +75,17 @@ class CreatePageView(LoginRequiredMixin, FormView):
             else:
                 return self.render_to_response(self.get_context_data(form=form))
         else:
-            messages.error(self.request, "Вы должны пройти верификацию, чтобы заполнить эту форму.")
-            return redirect('профиль')  # замените 'your_redirect_url' на ваш путь редиректа
+            return redirect('профиль')
 
 
 class UserLoginView(LoginView):
     template_name = 'fastcase/login.html'
     form_class = LoginForm
     success_url = reverse_lazy('welcome')
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Неверная почта или пароль')
+        return super().form_invalid(form)
 
 
 class LogoutUserView(LogoutView):

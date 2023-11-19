@@ -1,15 +1,80 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'fastcase/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fastcase/css/login.css' %}">
+    <script src="https://kit.fontawesome.com/cfed9a189e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">registration</button>
-    </form>
+    <div class="wrapper">
+        <header>
+            <ul class="header-list">
+                <li>
+                    <a class="header-list__name" href="/">fastcase</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="/">контакты</a>
+                </li>
+                <li>
+                    <a class="header-list__element" href="/create-page">создать страницу</a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <div class="user-container">
+                        <a class="header-list__element user-name" href="#"><i class="fa-solid fa-house house-icon"></i>
+                            {{ user.username }}</a>
+                        <ul class="user-list">
+                            <li>
+                                <a class="header-list__element" href="#">личный кабинет</a>
+                            </li>
+                            <li>
+                                <a class="header-list__element" href="#">выйти</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a class="header-list__element" href="#">войти</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </header>
+
+        <main>
+            <form class="reg-form" method="post">
+                {% csrf_token %}
+                <h3>Создать аккаунт</h3>
+            
+                <label for="email">Почта</label>
+                {{ form.email }}
+            
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
+            
+                <label for="password1">Пароль</label>
+                {{ form.password1 }}
+                {% for error in form.password1.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            
+                <label for="password2">Подтвердите пароль</label>
+                {{ form.password2 }}
+                {% for error in form.password2.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            
+                <button class="login-btn" type="submit">Зарегистрироваться</button>
+            
+                <div class="reg">
+                    <a class="reg-btn" href="/login">Уже есть аккаунт?</a>
+                </div>
+            </form>
+            
+        </main>
+    </div>
 </body>
 </html>

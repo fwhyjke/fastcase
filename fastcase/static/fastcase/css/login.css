@@ -1,0 +1,140 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000000;
+}
+
+.login-form {
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 0.2rem solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 4rem;
+}
+
+.reg-form {
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 0.2rem solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 4rem 6rem;
+}
+
+form *{
+    font-family: Inter-Regular;
+    color: #ffffff;
+    letter-spacing: 0.05rem;
+    outline: none;
+    border: none;
+}
+
+form h3{
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 4.2rem;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 3.0rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 5.0rem;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 1.0rem;
+    margin-top: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+.login-btn {
+    margin-top: 4.5rem;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    backdrop-filter: blur(1px);
+}
+
+.login-btn:hover {
+    opacity: 80%;
+}
+
+.social{
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.social a {
+    text-decoration: none;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgba(255,255,255,0.27);
+    border-radius: 6px;
+}
+
+.social a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+}
+
+.social i{
+  margin-right: 4px;
+}
+
+.reg {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.reg-btn {
+    background-color: rgba(175, 76, 76, 0.27);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.reg-btn:hover {
+    background-color: rgba(175, 76, 76, 0.2.login-form );
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+}
+
+.error {
+    width: 26rem;
+    font-size: 1rem;
+    color:rgb(175, 76, 76);
+}
+
+.log-error {
+    margin-top: 2.0rem;
+    font-size: 1.6rem;
+    color:rgb(175, 76, 76);
+    width: 26rem;
+}
