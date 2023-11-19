@@ -25,7 +25,7 @@ from fastcase_core import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fastcase.urls')),
-    path('api/get_page_info/', PageAPI.as_view()),
+    path('api/', include('fastcase_api.urls')),
     path('verify-email/<str:token>', VerifyEmailAPI.as_view())
 ]
 

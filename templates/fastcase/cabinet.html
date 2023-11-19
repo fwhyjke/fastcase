@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'fastcase/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fastcase/css/cabinet.css' %}">
+    <script src="https://kit.fontawesome.com/cfed9a189e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header>
+            <ul class="header-list">
+                <li>
+                    <a class="header-list__name" href="/">fastcase</a>
+                </li>
+                <li>
+                    <button class="header-list__element-btn" id="contact-btn">контакты</и>
+                </li>
+                <li>
+                    <a class="header-list__element" href="/create-page">создать страницу</a>
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <div class="user-container">
+                        <a class="header-list__element user-name" href="#"><i class="fa-solid fa-house house-icon"></i>
+                            {{ user.username }}</a>
+                        <ul class="user-list">
+                            <li>
+                                <a class="header-list__element" href="/cabinet">личный кабинет</a>
+                            </li>
+                            <li>
+                                <a class="header-list__element" href="/logout">выйти</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a class="header-list__element" href="/login">войти</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </header>
+        <main>
+            {% if user.is_verify %}
+            <div class="user-per">
+                <div>
+                    <p class="user-per__mail">email: {{ user.email }}</p>
+                </div>
+                <div>
+                    <p class="user-per__ver-true">Ваша почта подтверждена подтверждена</p>
+                </div>
+                <div>
+                    <p class="user-per__status">Никаках ограничений на сайте для вас нет</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="user-per">
+                <div>
+                    <p class="user-per__mail">email: {{ user.email }}</p>
+                </div>
+                <div>
+                    <p class="user-per__ver-fal">Ваша почта подтверждена не подтверждена</p>
+                </div>
+                <div>
+                    <p class="user-per__status">Чтобы создавать страницы и пользоваться всем функционалом, срочно подтвердите почту!</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="center-wraper">
+                <h1 class="username">Страницы {{ user.username }}</h1>
+            </div>
+
+            <ul class="page-list">
+                <li style="display: none;">
+                    <div class="page-info">
+                        <div class="row">
+                            <div class="center-wraper row-name">
+                                <p>Сслыка:</p>
+                            </div>
+                            <a class="page-link center-wraper" id="link" href="">dsadfdsаывщлыfdsfs</a>
+                        </div>
+                        <div class="row">
+                            <div class="center-wraper row-name">
+                                <p>Имя:</p>
+                            </div>
+                            <p class="infos center-wraper" id="name">2134234</p>
+                        </div>
+                        <div class="row">
+                            <div class="center-wraper row-name">
+                                <p>Должность:</p>
+                            </div>
+                            <p class="infos center-wraper" id="job">2134234</p>
+                        </div>
+                        <div class="row">
+                            <div class="center-wraper row-name">
+                                <p>Зарплата:</p>
+                            </div>
+                            <p class="infos center-wraper" id="salary">2134234</p>
+                        </div>
+
+                        <div class="">
+                            <a class="change-btn" href="">изменить</a>
+                            <a class="del-btn" href="">удалить</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <div id="my-element" data-user-id="{{ userid }}"></div>
+    <script src="{% static 'fastcase/js/cabinet.js' %}"></script>
+</body>
+</html>
+

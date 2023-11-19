@@ -75,13 +75,13 @@ class CreatePageView(LoginRequiredMixin, FormView):
             else:
                 return self.render_to_response(self.get_context_data(form=form))
         else:
-            return redirect('профиль')
+            return redirect('/cabinet')
 
 
 class UserLoginView(LoginView):
     template_name = 'fastcase/login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('welcome')
+    success_url = reverse_lazy('cabinet')
 
     def form_invalid(self, form):
         messages.error(self.request, 'Неверная почта или пароль')
@@ -96,10 +96,20 @@ class RegistrationUserView(CreateView):
     template_name = 'fastcase/registration.html'
     model = User
     form_class = RegistrationForm
-    success_url = reverse_lazy('welcome')
+    success_url = reverse_lazy('/cabinet')
 
     def form_valid(self, form):
         user = form.save()
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(self.request, user)
-        return redirect('welcome')
+        return redirect('/cabinet')
+
+
+class CabinetView(LoginRequiredMixin, TemplateView):
+    template_name = 'fastcase/cabinet.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['userid'] = self.request.user.id
+        return context

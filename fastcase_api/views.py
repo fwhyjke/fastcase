@@ -41,5 +41,25 @@ class VerifyEmailAPI(APIView):
         user = VerifyEmailToken.objects.get(token=token).user
         user.is_verify = True
         user.save()
-        return redirect('welcome')
+        return redirect('/cabinet')
 
+
+class GetUserPagesAPI(APIView):
+    def get(self, request, **kwargs):
+        user = self.kwargs['user']
+        info_objects = Info.objects.filter(user=user)
+        ids = list(reversed([i.pk for i in info_objects]))
+        links = list(reversed([f'http://127.0.0.1:8000/page?id={i.pk}' for i in info_objects]))
+
+        pages = []
+        for page in list(info_objects):
+            page = dict(PageInfoSerializer(page).data)
+            page['link'] = links.pop()
+            page['id'] = ids.pop()
+            pages.append(page)
+
+        data = dict()
+        data['user_id'] = user
+        data['pages'] = pages
+
+        return Response(data)

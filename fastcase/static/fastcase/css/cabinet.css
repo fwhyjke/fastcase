@@ -1,0 +1,112 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.center-wraper {
+    display: flex;
+    justify-content: center;
+}
+
+.username {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-family: Inter-Bold;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.page-list {
+    font-family: Inter-Regular;
+    list-style-type: none;
+}
+
+.page-list>li {
+    background-color: rgba(255, 255, 255, 0.205);
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+}
+
+.page-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.change-btn {
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background-color: rgb(110, 110, 110);
+}
+
+.del-btn {
+    color: rgb(255, 112, 112);
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background-color: rgb(110, 110, 110);
+}
+
+.row-name {
+    font-family: Inter-Light;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.589);
+}
+
+.page-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: rgba(199, 199, 199, 0.89);
+}
+
+.infos {
+    font-size: 1.6rem;
+    font-family: Inter-Regular;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.row {
+    width: calc(100rem / 5);
+}
+
+.user-per {
+    margin-top: 5rem;
+    font-size: 1.8rem;
+    font-family: Inter-Regular;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-per__mail {
+    color:white;
+    width: 30rem;
+}
+
+.user-per__ver-true {
+    font-family: Inter-Bold;
+    color: green;
+    text-align: center;
+    width: 30rem;
+}
+
+.user-per__ver-fal {
+    font-family: Inter-Bold;
+    color: red;
+    text-align: center;
+    width: 30rem;
+}
+
+.user-per__status {
+    color:white;
+    text-align: right;
+    width: 30rem;
+}
